@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0//EN" 
+  		"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">		
+ 		
+<validators>
+	<field name="custId">		
+			<field-validator type="requiredstring">
+			<message>Cust ID is required</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10</param>
+			<param name="minLength">1</param>
+			<param name="trim">true</param>
+			<message>Enter city 1-20 characters long.</message>
+		</field-validator>
+	</field>	
+	<field name="accountNo">
+		<field-validator type="requiredstring">
+			<message>AccountNo is required</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10</param>
+			<param name="minLength">1</param>
+			<param name="trim">true</param>
+			<message>Enter account no 1-10 characters long.</message>
+		</field-validator>
+	</field>	
+	<field name="balance">
+		<param name="minExclusive">100.0</param> 
+		<param name="maxExclusive">999999.99</param> 
+	</field>
+	<field name="type">		
+		<field-validator type="requiredstring">
+			<message>State is required</message>
+		</field-validator>
+	</field>
+	</validators>
+

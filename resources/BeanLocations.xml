@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- Database Configuration -->
+	
+	
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+<property name="url"
+value="jdbc:oracle:thin:@localhost:1521:orcl" />
+<property name="username" value="scott" />
+<property name="password" value="tiger" />
+</bean>
+ 
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    	<property name="dataSource">
+    		<ref bean="dataSource"/>
+    	</property>
+    	<property name="hibernateProperties">
+    		<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+    		</props>
+    	</property>
+    	
+		<property name="mappingResources">
+			<list>
+				<value>inb.hbm.xml</value>					
+			</list>
+		</property>
+		
+    </bean>
+     <!-- Product Data Access Object -->
+   <bean id="adminDao" class="com.DAO.AdminDAO" >
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   </bean>
+ <bean id="adminManager" class="com.Managers.AdminManager" >
+   		<property name="adminDao" ref="adminDao" />   		
+   </bean>
+   <bean id="customerDao" class="com.DAO.CustomerDAO" >
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   </bean>
+ 
+ <bean id="customerManager" class="com.Managers.CustomerManager" >
+   		<property name="customerDao" ref="customerDao" />   		
+   </bean>
+</beans>

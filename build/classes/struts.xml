@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" extends="struts-default">
+
+		<action name="login" class="com.actions.LoginAction">
+			<result name="success_admin">/admin/admin_home.jsp</result>
+			<result name="success_cust">/customer/custhome.jsp</result>
+			<result name="input">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="createaccount" class="com.actions.CreateAccountAction">
+			<result name="success">/admin/success.jsp</result>
+			<result name="input">createaccount.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="linkaccount" class="com.actions.LinkAccountAction">
+			<result name="success">/admin/success.jsp</result>
+			<result name="input">linkaccount.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="chequeaction" class="com.actions.ChequeAction">
+			<result name="success">/admin/chequerequest.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="chequebookaction" class="com.actions.ChequeBookAction">
+			<result name="success">/admin/chequebookrequest.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="clear" class="com.actions.ChequeRequestAction">
+			<result name="success">/admin/success.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="issue" class="com.actions.ViewChequeBookRequestAction">
+			<result name="success">/admin/success.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="logout" class="com.actions.LogoutAction">
+			<result name="success">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+
+		<action name="transfer" class="com.actions.TransferAction">
+
+			<result name="success">/customer/success.jsp</result>
+
+
+			<result name="failed">
+
+				/customer/failure.jsp
+        </result>
+
+			<result name="error">
+				error.jsp</result>
+		</action>
+
+
+		<action name="deposit" class="com.actions.DepositAction">
+
+
+			<result name="success">
+
+				/customer/success.jsp
+        </result>
+
+			<result name="failed">
+				/customer/failure.jsp
+
+        </result>
+
+			<result name="error">
+				error.jsp</result>
+		</action>
+
+
+		<action name="withdraw" class="com.actions.WithdrawAction">
+
+
+			<result name="success">
+
+				/customer/failure.jsp
+        </result>
+
+			<result name="failed">
+
+				/customer/success.jsp
+        </result>
+
+			<result name="error">
+				error.jsp</result>
+		</action>
+
+
+		<action name="ViewBalance" class="com.actions.MiniStmtAction">
+			<result name="success">/customer/ViewBalance.jsp</result>
+			<result name="error">/customer/failure.jsp</result>
+		</action>
+
+		<action name="ViewDetailStatement" class="com.actions.ViewDetailStatementAction">
+			<result name="success">/customer/ViewDetailStatement.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="ChequeStatus" class="com.actions.ChequeStatusAction">
+			<result name="success">/customer/ChequeStatus.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="ChequeBookRequest" class="com.actions.ChequeBookRequestAction">
+			<result name="success">/customer/ChequeBookRequest.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+
+		<action name="display" class="com.actions.RetrieveAction">
+			<result name="success">/customer/personal_details.jsp</result>
+
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="GeneratePinAction" class="com.actions.GeneratePinAction">
+			<result name="success">/customer/GeneratePin.jsp</result>
+
+			<result name="error">error.jsp</result>
+		</action>
+		
+	
+ <!--
+ <action name="update" class="com.actions.UpdateAction">
+			<result name="success">/customer/password.jsp</result>
+
+			<result name="error">error.jsp</result>
+			</action>
+   -->
+
+ 		
+ 
+ 
+ 
+ 
+ 
+	</package>
+</struts>

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.classes.Address" table="address">
+
+		<id name="addressId">
+			<generator class="native" />
+		</id>
+		<property name="plotNo" />
+		<property name="street" />
+		<property name="city" />
+		<property name="zip" />
+		<property name="state" />
+	</class>
+
+	<class name="com.classes.Customer">
+		<id name="custId">
+			<generator class="native" />
+		</id>
+		<property name="firstName" />
+		<property name="secondName" />
+		<property name="surName" />
+		<property name="email" />
+		<property name="landline" />
+		<property name="mobile" />
+		<property name="panno" />
+		<many-to-one name="addressId" column="addressId" cascade="all"
+			class="com.classes.Address" />
+
+	</class>
+
+	<class name="com.classes.Account">
+		<id name="accountNo">
+			<generator class="assigned" />
+		</id>
+		<property name="balance" />
+		<property name="type" />
+		<property name="dateOfAccount" />
+		<many-to-one name="primaryCustId" column="primarycustid" cascade="all" lazy="false"
+			class="com.classes.Customer" />
+
+	</class>
+	<class name="com.classes.UserAccount" table="useraccount">
+
+		<id name="username">
+			<generator class="assigned">
+			</generator>
+		</id>
+
+		<property name="password" />
+		<property name="roleid" />
+		<many-to-one name="primaryCustId" column="primarycustid" cascade="all" lazy="false"
+			class="com.classes.Customer" />
+	</class>
+	<class name="com.classes.ChequeBook" table="chequebook">
+
+		<id name="bookId">
+			<generator class="native">
+			</generator>
+		</id>
+
+		<property name="status" />		
+		<property name="dateOfIssue" />
+		<many-to-one name="accountNo" cascade="all" lazy="false"
+			class="com.classes.Account" />
+		
+	</class>
+		<class name="com.classes.Cheque" table="cheque">
+
+		<id name="chequeNo">
+			<generator class="assigned">
+			</generator>
+		</id>
+
+		<property name="status" />
+		<property name="amount" />
+		<property name="dateOfClearence" />
+		<property name="toaccountNo" column="toaccount"/>
+		<property name="fromAccount" />
+		
+	</class>
+	<class name="com.classes.Transaction" table="transaction">
+
+		<id name="transactionId">
+			<generator class="native">
+			</generator>
+		</id>
+
+
+		<property name="amount" />
+		<property name="paymentMode" />		
+		<property name="transactionDate" column="transdate"/>
+		<many-to-one name="toAccountNo"  column="toAccountNo" lazy="false"
+			class="com.classes.Account" />
+		<many-to-one name="fromAccount"  column="fromAccount" lazy="false"
+			class="com.classes.Account" />
+
+	</class>
+	
+</hibernate-mapping>
